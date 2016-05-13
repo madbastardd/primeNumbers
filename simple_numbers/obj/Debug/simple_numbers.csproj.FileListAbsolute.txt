@@ -1,0 +1,6 @@
+c:\users\мисик\documents\visual studio 2015\Projects\simple_numbers\simple_numbers\bin\Debug\simple_numbers.exe.config
+c:\users\мисик\documents\visual studio 2015\Projects\simple_numbers\simple_numbers\bin\Debug\simple_numbers.exe
+c:\users\мисик\documents\visual studio 2015\Projects\simple_numbers\simple_numbers\bin\Debug\simple_numbers.pdb
+c:\users\мисик\documents\visual studio 2015\Projects\simple_numbers\simple_numbers\obj\Debug\simple_numbers.csprojResolveAssemblyReference.cache
+c:\users\мисик\documents\visual studio 2015\Projects\simple_numbers\simple_numbers\obj\Debug\simple_numbers.exe
+c:\users\мисик\documents\visual studio 2015\Projects\simple_numbers\simple_numbers\obj\Debug\simple_numbers.pdb
