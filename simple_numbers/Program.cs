@@ -42,26 +42,9 @@ namespace simple_numbers {
         }
 
         static bool isCyclicShiftPrime(int i) {
-            if (!primeNumbers.Contains(i))
-                return false;
-
-            bool zero = i.ToString().Length > 2 && i.ToString()[1] == '0';
-            int tmp = Int32.Parse(new String(i.ToString().Skip(1).ToArray()) + i.ToString().First());
-
-            while (tmp != i) {
-                if (!primeNumbers.Contains(tmp))
+            foreach (var item in returnCyclicInt(i))
+                if (!primeNumbers.Contains(item))
                     return false;
-
-                String analyze = new String(tmp.ToString().Skip(1).ToArray());
-
-                if (!zero)
-                    tmp = Int32.Parse(analyze + tmp.ToString().First());
-                else
-                    tmp = Int32.Parse(analyze + tmp.ToString().First() + '0');
-
-                zero = analyze[0] == '0';
-            }
-
             return true;
         }
 
@@ -72,14 +55,14 @@ namespace simple_numbers {
             int tmp = Int32.Parse(new String(i.ToString().Skip(1).ToArray()) + i.ToString().First());
 
             while (tmp != i) {
+                yield return tmp;
+
                 String analyze = new String(tmp.ToString().Skip(1).ToArray());
 
                 if (!zero)
                     tmp = Int32.Parse(analyze + tmp.ToString().First());
                 else
                     tmp = Int32.Parse(analyze + tmp.ToString().First() + '0');
-
-                yield return tmp;
 
                 zero = analyze[0] == '0';
             }
