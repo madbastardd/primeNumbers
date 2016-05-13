@@ -18,6 +18,7 @@ namespace simple_numbers {
 
             while (tmpSet.Count > 0) {
                 int first = tmpSet.First();
+                
                 int tmp = first * 2;
 
                 while (tmp <= max) {
@@ -25,7 +26,14 @@ namespace simple_numbers {
                     tmp += first;
                 }
 
-                result.Add(first);
+                if (!(first >= 10 && (first.ToString().Contains("0") ||
+                    first.ToString().Contains("2") ||
+                    first.ToString().Contains("4") ||
+                    first.ToString().Contains("5") ||
+                    first.ToString().Contains("6") ||
+                    first.ToString().Contains("8")))) {
+                    result.Add(first);
+                }
 
                 tmpSet.Remove(first);
             }
@@ -78,11 +86,11 @@ namespace simple_numbers {
         }
         static void Main(string[] args) {
             SortedSet<int> allPrime = new SortedSet<int>();
-            for (int i = 2; i <= max; ++i)
+            foreach (var i in primeNumbers)
                 if (!allPrime.Contains(i) && isCyclicShiftPrime(i))
                     foreach (var item in returnCyclicInt(i)) 
                         allPrime.Add(item);
-                    
+
             Console.WriteLine(allPrime.Count);
         }
     }
