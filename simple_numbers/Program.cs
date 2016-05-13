@@ -27,7 +27,7 @@ namespace simple_numbers {
 
                 result.Add(first);
 
-                tmpSet.Remove(tmpSet.First());
+                tmpSet.Remove(first);
             }
 
             return result;
@@ -79,7 +79,7 @@ namespace simple_numbers {
         static void Main(string[] args) {
             SortedSet<int> allPrime = new SortedSet<int>();
             for (int i = 2; i <= max; ++i)
-                if (isCyclicShiftPrime(i))
+                if (!allPrime.Contains(i) && isCyclicShiftPrime(i))
                     foreach (var item in returnCyclicInt(i)) 
                         allPrime.Add(item);
                     
