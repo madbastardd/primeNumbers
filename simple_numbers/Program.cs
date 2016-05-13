@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace simple_numbers {
     class Program {
         static int max = 1000000;
-        static SortedSet<int> primeNumbers = findPrimeNumbers();
+        static SortedSet<int> specialPrimeNumbers = findPrimeNumbers();
         
         static SortedSet<int> findPrimeNumbers() {
             SortedSet<int> tmpSet = new SortedSet<int>();
@@ -15,6 +15,8 @@ namespace simple_numbers {
                 tmpSet.Add(i);
 
             SortedSet<int> result = new SortedSet<int>();
+
+            char[] exceptNumbers = new[] { '2', '4', '8', '0', '5' };
 
             while (tmpSet.Count > 0) {
                 int first = tmpSet.First();
@@ -26,14 +28,8 @@ namespace simple_numbers {
                     tmp += first;
                 }
 
-                if (!(first >= 10 && (first.ToString().Contains("0") ||
-                    first.ToString().Contains("2") ||
-                    first.ToString().Contains("4") ||
-                    first.ToString().Contains("5") ||
-                    first.ToString().Contains("6") ||
-                    first.ToString().Contains("8")))) {
+                if (first < 10 || first.ToString().ToCharArray().Intersect(exceptNumbers).Count() == 0)
                     result.Add(first);
-                }
 
                 tmpSet.Remove(first);
             }
@@ -43,7 +39,7 @@ namespace simple_numbers {
 
         static bool isCyclicShiftPrime(int i) {
             foreach (var item in returnCyclicInt(i))
-                if (!primeNumbers.Contains(item))
+                if (!specialPrimeNumbers.Contains(item))
                     return false;
             return true;
         }
@@ -69,7 +65,7 @@ namespace simple_numbers {
         }
         static void Main(string[] args) {
             SortedSet<int> allPrime = new SortedSet<int>();
-            foreach (var i in primeNumbers)
+            foreach (var i in specialPrimeNumbers)
                 if (!allPrime.Contains(i) && isCyclicShiftPrime(i))
                     foreach (var item in returnCyclicInt(i)) 
                         allPrime.Add(item);
